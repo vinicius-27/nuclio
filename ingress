@@ -1,0 +1,61 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: nuclio-dashboard
+  namespace: nuclio
+  selfLink: /apis/extensions/v1beta1/namespaces/nuclio/ingresses/nuclio-dashboard
+  uid: 57db2b34-0cc9-4a75-a9d2-24ba1fa178dc
+  resourceVersion: '3246679'
+  generation: 6
+  creationTimestamp: '2020-08-20T17:45:51Z'
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  managedFields:
+    - manager: kubectl
+      operation: Update
+      apiVersion: extensions/v1beta1
+      time: '2020-08-20T17:45:51Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubernetes.io/ingress.class': {}
+            'f:nginx.ingress.kubernetes.io/rewrite-target': {}
+    - manager: nginx-ingress-controller
+      operation: Update
+      apiVersion: networking.k8s.io/v1beta1
+      time: '2020-08-20T17:46:50Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:loadBalancer':
+            'f:ingress': {}
+    - manager: dashboard
+      operation: Update
+      apiVersion: extensions/v1beta1
+      time: '2020-08-20T18:40:14Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:nginx.ingress.kubernetes.io/backend-protocol': {}
+        'f:spec':
+          'f:rules': {}
+spec:
+  rules:
+    - host: nuclio.kaas-hml.dns
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              serviceName: nuclio-dashboard
+              servicePort: 8070
+status:
+  loadBalancer:
+    ingress:
+      - ip: ip
+      - ip: ip
