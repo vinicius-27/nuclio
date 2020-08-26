@@ -208,3 +208,5 @@ spec:
     - protocol: TCP
       port: 8080
       name: admin
+
+kubectl -n MEU_NAMESPACE create -f qualquer_nome.yaml
